@@ -10,8 +10,13 @@
  * click the "Hello" button, your output should match that of the example.
  */
 
-function sayHello() {
 
+function sayHello() {
+  //Print Text
+  let ctx = document.getElementById("canvas1").getContext("2d");
+  ctx.clearRect(0, 0, 1024, 128);
+  ctx.font = "48px sans-serif";
+  ctx.strokeText("Hello, World!", 10, 50);
 }
 
 /*
@@ -38,9 +43,42 @@ function sayHello() {
  */
 
 function drawRectangle() {
+  //Define variables
+  let ctx = document.getElementById("canvas2").getContext("2d");
+  let width = prompt("Enter a Width value");
+  let height = prompt("Enter a Height value");
+  let xcor = prompt("Enter a x coordinate");
+  let ycor = prompt("Enter a y coordinate");
 
+  //Check if values are valid
+  let inval = 0;
+  if(width > 1024 || height > 512 || xcor > 1000 || ycor > 500){
+    alert("The rectangle will not fit on the canvas");
+    inval = 1;
+  }else if(width < 1){
+    alert("The width value is too low");
+    inval = 1;
+  }else if(height < 1){
+    alert("The height value is too low");
+    inval = 1;
+  }else if(xcor < 5){
+    alert("The x coordinate is too small");
+    inval = 1;
+  }else if(ycor < 5){
+    alert("The y coordinate is too small");
+    inval = 1;
+  }else if(isNaN(width) || isNaN(height) || isNaN(xcor) || isNaN(ycor)){
+    alert("One of your values is not a number");
+    inval = 1;
+  }
+  //Print Rectangle
+  if(inval == 0){
+    ctx.clearRect(0, 0, 1024, 512);
+    ctx.strokeRect(xcor, ycor, width, height);
+  }else{
+    ctx.clearRect(0, 0, 1024, 512);
+  }
 }
-
 /*
  * Color. 3 points.
  *
@@ -67,7 +105,37 @@ function drawRectangle() {
  */
 
 function drawColoredRectangle() {
+  //Define variables
+  let ctx = document.getElementById("canvas3").getContext("2d");
+  let color = prompt("Enter a Color:")
+  let inval = 0;
 
+  //Restrict Prompt and Determine Color
+  if(color == "black"){
+    ctx.fillStyle = "black";
+  }else if(color == "blue"){
+    ctx.fillStyle = "blue";
+  }else if(color == "green"){
+    ctx.fillStyle = "green";
+  }else if(color == "orange"){
+    ctx.fillStyle = "orange";
+  }else if(color == "purple"){
+    ctx.fillStyle = "purple";
+  }else if(color == "red"){
+    ctx.fillStyle = "red";
+  }else if(color == "yellow"){
+    ctx.fillStyle = "yellow";
+  }else{
+    alert(color + " is not a supported color");
+    inval = 1;
+  }
+  //Print the Rectangle
+  if(inval == 0){
+    ctx.clearRect(0, 0, 1024, 128);
+    ctx.fillRect(10, 10, 100, 50);
+  }else{
+    ctx.clearRect(0, 0, 1024, 128);
+  }
 }
 
 /*
@@ -100,8 +168,18 @@ function drawColoredRectangle() {
  */
 
 function drawTriangle() {
+  //Define variables
+  let ctx = document.getElementById("canvas4").getContext("2d");
+  let side1 = prompt("Side 1:")
+  let side2 = prompt("Side 2:")
+  let side3 = prompt("Side 3:")
 
+  //Check validity of sides
+  if(isNaN(side1) || isNaN(side2) || isNaN(side3)){
+    
+  }
 }
+
 
 /*
  * Smile. 7 points.
