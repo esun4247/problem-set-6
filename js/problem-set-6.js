@@ -50,33 +50,29 @@ function drawRectangle() {
   let xcor = prompt("Enter a x coordinate");
   let ycor = prompt("Enter a y coordinate");
 
-  //Check if values are valid
+  //Check if values are valid and print rectangle
   let inval = 0;
   if(width > 1024 || height > 512 || xcor > 1000 || ycor > 500){
     alert("The rectangle will not fit on the canvas");
-    inval = 1;
+    ctx.clearRect(0, 0, 1024, 512);
   }else if(width < 1){
     alert("The width value is too low");
-    inval = 1;
+    ctx.clearRect(0, 0, 1024, 512);
   }else if(height < 1){
     alert("The height value is too low");
-    inval = 1;
+    ctx.clearRect(0, 0, 1024, 512);
   }else if(xcor < 5){
     alert("The x coordinate is too small");
-    inval = 1;
+    ctx.clearRect(0, 0, 1024, 512);
   }else if(ycor < 5){
     alert("The y coordinate is too small");
-    inval = 1;
+    ctx.clearRect(0, 0, 1024, 512);
   }else if(isNaN(width) || isNaN(height) || isNaN(xcor) || isNaN(ycor)){
     alert("One of your values is not a number");
-    inval = 1;
-  }
-  //Print Rectangle
-  if(inval == 0){
     ctx.clearRect(0, 0, 1024, 512);
-    ctx.strokeRect(xcor, ycor, width, height);
   }else{
     ctx.clearRect(0, 0, 1024, 512);
+    ctx.strokeRect(xcor, ycor, width, height);
   }
 }
 /*
@@ -110,30 +106,13 @@ function drawColoredRectangle() {
   let color = prompt("Enter a Color:")
   let inval = 0;
 
-  //Restrict Prompt and Determine Color
-  if(color == "black"){
-    ctx.fillStyle = "black";
-  }else if(color == "blue"){
-    ctx.fillStyle = "blue";
-  }else if(color == "green"){
-    ctx.fillStyle = "green";
-  }else if(color == "orange"){
-    ctx.fillStyle = "orange";
-  }else if(color == "purple"){
-    ctx.fillStyle = "purple";
-  }else if(color == "red"){
-    ctx.fillStyle = "red";
-  }else if(color == "yellow"){
-    ctx.fillStyle = "yellow";
-  }else{
-    alert(color + " is not a supported color");
-    inval = 1;
-  }
-  //Print the Rectangle
-  if(inval == 0){
+  //Determine Color and Print Rectangle
+  if(color == "black" || color =="blue" || color == "green" || color == "orange" || color == "purple" || color == "red" || color == "yellow"){
+    ctx.fillStyle = color;
     ctx.clearRect(0, 0, 1024, 128);
     ctx.fillRect(10, 10, 100, 50);
   }else{
+    alert(color + " is not a supported color");
     ctx.clearRect(0, 0, 1024, 128);
   }
 }
@@ -170,13 +149,31 @@ function drawColoredRectangle() {
 function drawTriangle() {
   //Define variables
   let ctx = document.getElementById("canvas4").getContext("2d");
-  let side1 = prompt("Side 1:")
-  let side2 = prompt("Side 2:")
-  let side3 = prompt("Side 3:")
+  let side1 = Number(prompt("Side 1:"));
+  let side2 = Number(prompt("Side 2:"));
+  let side3 = Number(prompt("Side 3:"));
+
+
 
   //Check validity of sides
   if(isNaN(side1) || isNaN(side2) || isNaN(side3)){
-
+    alert("One of your inputs is not a number");
+    ctx.clearRect(0, 0, 1024, 512);
+  }else if(Math.pow(side1, 2) + Math.pow(side2, 2) !== Math.pow(side3, 2)){
+    alert("Not a valid right triangle");
+    ctx.clearRect(0, 0, 1024, 512);
+  }else if(side1 > 512 || side2 > 1024){
+    alert("One of your sides is too long")
+    ctx.clearRect(0, 0, 1024, 512);
+  }else{
+    //Draw the triangle
+    ctx.clearRect(0, 0, 1024, 512);
+    ctx.beginPath();
+    ctx.moveTo(10, 10);
+    ctx.lineTo(10, (10+side1));
+    ctx.lineTo((10+side2), (10+side1));
+    ctx.closePath();
+    ctx.stroke();
   }
 }
 
@@ -201,7 +198,32 @@ function drawTriangle() {
  */
 
 function drawSmileyFace() {
+  //Define variables
+  let ctx = document.getElementById("canvas5").getContext("2d");
+  let radius = Number(prompt("Enter a valid radius:"));
 
+  //Check validity and print face
+  if(isNaN(radius)){
+    alert("The radius is not a number");
+    ctx.clearRect(0, 0, 1024, 512);
+  }else if(radius > 200){
+    alert("The radius is too large");
+    ctx.clearRect(0, 0, 1024, 512);
+  }else{
+    ctx.clearRect(0, 0, 1024, 512);
+    ctx.beginPath();
+    ctx.arc(radius, radius, radius, 0, 2*Math.PI);
+    ctx.stroke();
+    ctx.beginPath()
+    ctx.arc(radius*1.4, radius*0.5, radius*0.1, 0, 2*Math.PI);
+    ctx.stroke();
+    ctx.beginPath()
+    ctx.arc(radius*0.6, radius*0.5, radius*0.1, 0, 2*Math.PI);
+    ctx.stroke();
+    ctx.beginPath()
+    ctx.arc(radius, radius, radius*0.7, 0, Math.PI);
+    ctx.stroke();
+  }
 }
 
 /*
@@ -223,9 +245,22 @@ function drawSmileyFace() {
  */
 
 function drawStar() {
+  //Define variables
+  let ctx = document.getElementById("canvas6").getContext("2d");
+  let ourad = Number(prompt("Outer Radius:"));
+  let inrad = Number(prompt("Inner Radius:"));
 
+  //Check validity and print star
+  if(isNaN(ourad) || isNaN(inrad)){
+    alert("One of the radii is not a number");
+    ctx.clearRect(0, 0, 1024, 512);
+  }else if(ourad < inrad){
+    alert("The outer radius must be larger than the inner radius.")
+    ctx.clearRect(0, 0, 1024, 512);
+  }else{
+
+  }
 }
-
 /*
  * Stop Sign. 7 points.
  *
