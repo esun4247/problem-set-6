@@ -176,7 +176,7 @@ function drawTriangle() {
 
   //Check validity of sides
   if(isNaN(side1) || isNaN(side2) || isNaN(side3)){
-    
+
   }
 }
 
