@@ -249,16 +249,30 @@ function drawStar() {
   let ctx = document.getElementById("canvas6").getContext("2d");
   let ourad = Number(prompt("Outer Radius:"));
   let inrad = Number(prompt("Inner Radius:"));
+  let pi = Math.PI;
 
   //Check validity and print star
   if(isNaN(ourad) || isNaN(inrad)){
     alert("One of the radii is not a number");
     ctx.clearRect(0, 0, 1024, 512);
-  }else if(ourad < inrad){
+  }else if(ourad <= inrad){
     alert("The outer radius must be larger than the inner radius.")
     ctx.clearRect(0, 0, 1024, 512);
   }else{
-
+    ctx.clearRect(0, 0, 1024, 512);
+    ctx.beginPath();
+    ctx.moveTo((ourad*Math.cos(1.5*pi)+125), (ourad*Math.sin(1.5*pi)+125));
+    ctx.lineTo((inrad*Math.cos(1.7*pi)+125), (inrad*Math.sin(1.7*pi)+125));
+    ctx.lineTo((ourad*Math.cos(1.9*pi)+125), (ourad*Math.sin(1.9*pi)+125));
+    ctx.lineTo((inrad*Math.cos(0.1*pi)+125), (inrad*Math.sin(0.1*pi)+125));
+    ctx.lineTo((ourad*Math.cos(0.3*pi)+125), (ourad*Math.sin(0.3*pi)+125));
+    ctx.lineTo((inrad*Math.cos(0.5*pi)+125), (inrad*Math.sin(0.5*pi)+125));
+    ctx.lineTo((ourad*Math.cos(0.7*pi)+125), (ourad*Math.sin(0.7*pi)+125));
+    ctx.lineTo((inrad*Math.cos(0.9*pi)+125), (inrad*Math.sin(0.9*pi)+125));
+    ctx.lineTo((ourad*Math.cos(1.1*pi)+125), (ourad*Math.sin(1.1*pi)+125));
+    ctx.lineTo((inrad*Math.cos(1.3*pi)+125), (inrad*Math.sin(1.3*pi)+125));
+    ctx.lineTo((ourad*Math.cos(1.5*pi)+125), (ourad*Math.sin(1.5*pi)+125));
+    ctx.stroke();
   }
 }
 /*
