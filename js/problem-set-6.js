@@ -147,12 +147,19 @@ function drawColoredRectangle() {
  */
 
 function drawTriangle() {
-  //Define variables
+  //Define variables and create array
   let ctx = document.getElementById("canvas4").getContext("2d");
-  let side1 = Number(prompt("Side 1:"));
-  let side2 = Number(prompt("Side 2:"));
-  let side3 = Number(prompt("Side 3:"));
-
+  let arr = []
+  let sideOne = Number(prompt("Side 1:"));
+  let sideTwo = Number(prompt("Side 2:"));
+  let sideThree = Number(prompt("Side 3:"));
+  arr.push(sideOne);
+  arr.push(sideTwo);
+  arr.push(sideThree);
+  let side1 = Number(Math.min(...arr));
+  let side3 = Number(Math.max(...arr));
+  let sum = arr.reduce((previous, current) => current += previous);
+  let side2 = Number(sum - (side1+side3));
 
 
   //Check validity of sides
@@ -249,7 +256,7 @@ function drawStar() {
   let ctx = document.getElementById("canvas6").getContext("2d");
   let ourad = Number(prompt("Outer Radius:"));
   let inrad = Number(prompt("Inner Radius:"));
-  let pi = Math.PI;
+  const PI = Math.PI;
 
   //Check validity and print star
   if(isNaN(ourad) || isNaN(inrad)){
@@ -259,19 +266,20 @@ function drawStar() {
     alert("The outer radius must be larger than the inner radius.")
     ctx.clearRect(0, 0, 1024, 512);
   }else{
+    //Traces a path using cos and sin to find points on the arc
     ctx.clearRect(0, 0, 1024, 512);
     ctx.beginPath();
-    ctx.moveTo((ourad*Math.cos(1.5*pi)+125), (ourad*Math.sin(1.5*pi)+125));
-    ctx.lineTo((inrad*Math.cos(1.7*pi)+125), (inrad*Math.sin(1.7*pi)+125));
-    ctx.lineTo((ourad*Math.cos(1.9*pi)+125), (ourad*Math.sin(1.9*pi)+125));
-    ctx.lineTo((inrad*Math.cos(0.1*pi)+125), (inrad*Math.sin(0.1*pi)+125));
-    ctx.lineTo((ourad*Math.cos(0.3*pi)+125), (ourad*Math.sin(0.3*pi)+125));
-    ctx.lineTo((inrad*Math.cos(0.5*pi)+125), (inrad*Math.sin(0.5*pi)+125));
-    ctx.lineTo((ourad*Math.cos(0.7*pi)+125), (ourad*Math.sin(0.7*pi)+125));
-    ctx.lineTo((inrad*Math.cos(0.9*pi)+125), (inrad*Math.sin(0.9*pi)+125));
-    ctx.lineTo((ourad*Math.cos(1.1*pi)+125), (ourad*Math.sin(1.1*pi)+125));
-    ctx.lineTo((inrad*Math.cos(1.3*pi)+125), (inrad*Math.sin(1.3*pi)+125));
-    ctx.lineTo((ourad*Math.cos(1.5*pi)+125), (ourad*Math.sin(1.5*pi)+125));
+    ctx.moveTo((ourad*Math.cos(1.5*PI)+125), (ourad*Math.sin(1.5*PI)+125));
+    ctx.lineTo((inrad*Math.cos(1.7*PI)+125), (inrad*Math.sin(1.7*PI)+125));
+    ctx.lineTo((ourad*Math.cos(1.9*PI)+125), (ourad*Math.sin(1.9*PI)+125));
+    ctx.lineTo((inrad*Math.cos(0.1*PI)+125), (inrad*Math.sin(0.1*PI)+125));
+    ctx.lineTo((ourad*Math.cos(0.3*PI)+125), (ourad*Math.sin(0.3*PI)+125));
+    ctx.lineTo((inrad*Math.cos(0.5*PI)+125), (inrad*Math.sin(0.5*PI)+125));
+    ctx.lineTo((ourad*Math.cos(0.7*PI)+125), (ourad*Math.sin(0.7*PI)+125));
+    ctx.lineTo((inrad*Math.cos(0.9*PI)+125), (inrad*Math.sin(0.9*PI)+125));
+    ctx.lineTo((ourad*Math.cos(1.1*PI)+125), (ourad*Math.sin(1.1*PI)+125));
+    ctx.lineTo((inrad*Math.cos(1.3*PI)+125), (inrad*Math.sin(1.3*PI)+125));
+    ctx.lineTo((ourad*Math.cos(1.5*PI)+125), (ourad*Math.sin(1.5*PI)+125));
     ctx.stroke();
   }
 }
@@ -291,7 +299,23 @@ function drawStar() {
  */
 
 function drawStopSign() {
+  //Define variables
+  let ctx = document.getElementById("canvas7").getContext("2d");
 
+  //Create shape and fill
+  ctx.beginPath();
+  ctx.moveTo(10, 66.57);
+  ctx.lineTo(66.57, 10);
+  ctx.lineTo(146.57, 10);
+  ctx.lineTo(203.14, 66.57);
+  ctx.lineTo(203.14, 146.57);
+  ctx.lineTo(146.57, 203.14);
+  ctx.lineTo(66.57, 203.14);
+  ctx.lineTo(10, 146.57);
+  ctx.lineTo(10, 66.57);
+  ctx.stroke();
+  ctx.fillStyle = "red";
+  ctx.fill();
 }
 
 /*
