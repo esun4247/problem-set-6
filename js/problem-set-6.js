@@ -450,6 +450,7 @@ function drawHouse() {
     ctx.stroke();
     ctx.fillStyle = doorCol;
     ctx.fill();
+    ctx.beginPath();
     ctx.arc(548, 650, 6, 0, (2*Math.PI));
     ctx.stroke();
     ctx.fillStyle = "yellow";
