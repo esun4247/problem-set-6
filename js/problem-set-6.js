@@ -269,17 +269,14 @@ function drawStar() {
     //Traces a path using cos and sin to find points on the arc
     ctx.clearRect(0, 0, 1024, 512);
     ctx.beginPath();
-    ctx.moveTo((ourad*Math.cos(1.5*PI)+125), (ourad*Math.sin(1.5*PI)+125));
-    ctx.lineTo((inrad*Math.cos(1.7*PI)+125), (inrad*Math.sin(1.7*PI)+125));
-    ctx.lineTo((ourad*Math.cos(1.9*PI)+125), (ourad*Math.sin(1.9*PI)+125));
-    ctx.lineTo((inrad*Math.cos(0.1*PI)+125), (inrad*Math.sin(0.1*PI)+125));
-    ctx.lineTo((ourad*Math.cos(0.3*PI)+125), (ourad*Math.sin(0.3*PI)+125));
-    ctx.lineTo((inrad*Math.cos(0.5*PI)+125), (inrad*Math.sin(0.5*PI)+125));
-    ctx.lineTo((ourad*Math.cos(0.7*PI)+125), (ourad*Math.sin(0.7*PI)+125));
-    ctx.lineTo((inrad*Math.cos(0.9*PI)+125), (inrad*Math.sin(0.9*PI)+125));
-    ctx.lineTo((ourad*Math.cos(1.1*PI)+125), (ourad*Math.sin(1.1*PI)+125));
-    ctx.lineTo((inrad*Math.cos(1.3*PI)+125), (inrad*Math.sin(1.3*PI)+125));
-    ctx.lineTo((ourad*Math.cos(1.5*PI)+125), (ourad*Math.sin(1.5*PI)+125));
+    ctx.moveTo(125, 125 - ourad);
+    let j = 1.5;
+    for(let i = 0; i < 5; i++){
+      j += 0.2
+      ctx.lineTo((inrad*Math.cos(j*PI))+125, (inrad*Math.sin(j*PI))+125);
+      j += 0.2
+      ctx.lineTo((ourad*Math.cos(j*PI))+125, (ourad*Math.sin(j*PI))+125);
+    }
     ctx.stroke();
   }
 }
@@ -316,6 +313,9 @@ function drawStopSign() {
   ctx.stroke();
   ctx.fillStyle = "red";
   ctx.fill();
+  ctx.font = "65px sans-serif";
+  ctx.fillStyle = "white";
+  ctx.fillText("STOP", 20, 128.57);
 }
 
 /*
@@ -337,7 +337,42 @@ function drawStopSign() {
  */
 
 function drawPyramid() {
+  //Define variables
+  let ctx = document.getElementById("canvas8").getContext("2d");
+  let length = Number(prompt("Side Length:"));
+  let x = 10;
+  let y = 502;
+  let n = 1
+  let m = 0.5
+  let numRow = 5;
 
+  //Check numbers and draw pyramid
+  if(isNaN(length)){
+    alert("That side length is not a number");
+    ctx.clearRect(0, 0, 1024, 512);
+  }else if(length > 100){
+    alert("That side length is too long");
+    ctx.clearRect(0, 0, 1024, 512);
+  }else{
+    ctx.clearRect(0, 0, 1024, 512);
+    for(let i = 0; i < 5; i++){
+      for(let j = 0; j < numRow; j++){
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x, y-length);
+        ctx.lineTo(x+length, y-length);
+        ctx.lineTo(x+length, y);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        x += length;
+      }
+      x = 10 + (m*length);
+      y = 502 - (n*length);
+      numRow--;
+      n++;
+      m += 0.5;
+    }
+  }
 }
 
 /*
@@ -370,5 +405,28 @@ function drawPyramid() {
  */
 
 function drawHouse() {
+  //Define variables
+  let ctx = document.getElementById("canvas9").getContext("2d");
+  let houseCol = prompt("Enter a house color:");
+  let doorCol = prompt("Enter a door color:");
 
+  //Check input and draw house
+
+    ctx.clearRect(0, 0, 1024, 750);
+  if(doorCol != "black" && doorCol != "blue" && doorCol != "green" && doorCol != "orange" && doorCol != "purple" && doorCol != "red" && doorCol != "yellow"){
+    alert("The door color is not a number");
+    ctx.clearRect(0, 0, 1024, 750);
+  }else if(houseCol != "black" && houseCol != "blue" && houseCol != "green" && houseCol != "orange" && houseCol != "purple" && houseCol != "red" && houseCol != "yellow"){
+    alert("The house color is not a number");
+  }else{
+    ctx.beginPath();
+    ctx.moveTo(150, 740);
+    ctx.lineTo(874, 740);
+    ctx.lineTo(874, 300);
+    ctx.lineTo(150, 300);
+    ctx.lineTo(150, 740);
+    ctx.stroke();
+    ctx.fillStyle = houseCol;
+    ctx.fill();
+  }
 }
