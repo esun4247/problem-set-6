@@ -447,6 +447,7 @@ function drawHouse() {
     ctx.lineTo(542, 620);
     ctx.lineTo(472, 620);
     ctx.lineTo(472, 740);
+    ctx.stroke();
     ctx.fillStyle = doorCol;
     ctx.fill();
   }
