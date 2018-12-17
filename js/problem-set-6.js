@@ -439,7 +439,7 @@ function drawHouse() {
     ctx.fillStyle = "lightblue";
     ctx.fillRect(300, 620, 80, 80);
     ctx.fillRect(644, 620, 80, 80);
-    ctx.fillRect(640, 380, 80, 80);
+    ctx.fillRect(644, 380, 80, 80);
     ctx.fillRect(300, 380, 80, 80);
 
   }
