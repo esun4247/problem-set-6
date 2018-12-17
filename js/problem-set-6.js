@@ -442,13 +442,17 @@ function drawHouse() {
     ctx.fillRect(644, 380, 80, 80);
     ctx.fillRect(300, 380, 80, 80);
     ctx.beginPath();
-    ctx.moveTo(472, 740);
-    ctx.lineTo(542, 740);
-    ctx.lineTo(542, 620);
-    ctx.lineTo(472, 620);
-    ctx.lineTo(472, 740);
+    ctx.moveTo(452, 740);
+    ctx.lineTo(562, 740);
+    ctx.lineTo(562, 560);
+    ctx.lineTo(452, 560);
+    ctx.lineTo(452, 740);
     ctx.stroke();
     ctx.fillStyle = doorCol;
+    ctx.fill();
+    ctx.arc(548, 650, 6, 0, (2*Math.PI));
+    ctx.stroke();
+    ctx.fillStyle = "yellow";
     ctx.fill();
   }
 }
