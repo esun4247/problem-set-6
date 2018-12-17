@@ -413,11 +413,11 @@ function drawHouse() {
   //Check input and draw house
 
     ctx.clearRect(0, 0, 1024, 750);
-  if(doorCol != "black" && doorCol != "blue" && doorCol != "green" && doorCol != "orange" && doorCol != "purple" && doorCol != "red" && doorCol != "yellow"){
-    alert("The door color is not a number");
+  if(doorCol != "blue" && doorCol != "brown" && doorCol != "green" && doorCol != "orange" && doorCol != "purple" && doorCol != "red" && doorCol != "yellow"){
+    alert("The door color is not supported");
     ctx.clearRect(0, 0, 1024, 750);
-  }else if(houseCol != "black" && houseCol != "blue" && houseCol != "green" && houseCol != "orange" && houseCol != "purple" && houseCol != "red" && houseCol != "yellow"){
-    alert("The house color is not a number");
+  }else if(houseCol != "blue" && houseCol != "brown" && houseCol != "green" && houseCol != "orange" && houseCol != "purple" && houseCol != "red" && houseCol != "yellow"){
+    alert("The house color is not supported");
   }else{
     ctx.beginPath();
     ctx.moveTo(150, 740);
