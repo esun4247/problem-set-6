@@ -433,7 +433,15 @@ function drawHouse() {
     ctx.lineTo(874, 300);
     ctx.lineTo(150, 300);
     ctx.stroke();
-    ctx.fillStyle = gray;
+    ctx.fillStyle = "gray";
+    ctx.fill();
+    ctx.moveTo(150, 30);
+    ctx.lineTo(210, 30);
+    ctx.lineTo(210, 90);
+    ctx.lineTo(150, 90);
+    ctx.lineTo(150, 30);
+    ctx.stroke();
+    ctx.fillStyle = "lightblue";
     ctx.fill();
   }
 }
