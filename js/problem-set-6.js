@@ -428,6 +428,7 @@ function drawHouse() {
     ctx.stroke();
     ctx.fillStyle = houseCol;
     ctx.fill();
+    ctx.beginPath();
     ctx.moveTo(150, 300);
     ctx.lineTo(512, 10);
     ctx.lineTo(874, 300);
@@ -436,6 +437,6 @@ function drawHouse() {
     ctx.fillStyle = "gray";
     ctx.fill();
     ctx.fillStyle = "lightblue";
-    ctx.fillRect(300, 710, 70, 70);
+    ctx.fillRect(300, 640, 70, 70);
   }
 }
