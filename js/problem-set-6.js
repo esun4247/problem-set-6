@@ -428,5 +428,6 @@ function drawHouse() {
     ctx.stroke();
     ctx.fillStyle = houseCol;
     ctx.fill();
+    
   }
 }
